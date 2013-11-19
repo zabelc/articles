@@ -1,4 +1,4 @@
-package net.courtzabel.articles.date-extraction
+package net.courtzabel.articles.date;
 
 import java.text.DateFormatSymbols;
 import java.text.ParseException;
@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import org.springframework.util.StringUtils;
+import org.apache.commons.lang3.StringUtils;
 
 /**
  * @author zabelc
@@ -87,7 +87,7 @@ public class SimpleDateFormatFinder {
 		
 		for (int i = 0; i < arr.length; i++) {
 			String str = arr[i];
-			if(StringUtils.hasText(str) ){
+			if(StringUtils.isNotBlank(str) ){
 				if( rm.length()>3 && rm.charAt(rm.length()-1)!='|' )
 					rm.append("|");
 				rm.append( str );

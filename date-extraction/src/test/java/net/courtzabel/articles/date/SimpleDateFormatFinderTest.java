@@ -1,17 +1,19 @@
 
-package net.courtzabel.articles.date-extraction;
+package net.courtzabel.articles.date;
 
-import static org.junit.Assert.*;
-
-import gov.sec.www.migrate.extract.fields.SimpleDateFormatFinder.DateStringTuple;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertTrue;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
+import net.courtzabel.articles.date.SimpleDateFormatFinder.DateStringTuple;
+
+import org.apache.commons.lang3.StringUtils;
 import org.junit.Before;
 import org.junit.Test;
-import org.springframework.util.StringUtils;
 
 public class SimpleDateFormatFinderTest {
 
@@ -76,7 +78,7 @@ public class SimpleDateFormatFinderTest {
 		List<Date> dates = sdfFinder.findDates(testData);
 		
 		assertNotNull(dates);
-		assertEquals( StringUtils.countOccurrencesOf(data,"DATE"), dates.size());
+		assertEquals( StringUtils.countMatches(data,"DATE"), dates.size());
 		for (Date date : dates) {
 			compareDates(testDate, date);
 		}
